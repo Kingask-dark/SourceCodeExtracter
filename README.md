@@ -13,9 +13,9 @@ java ExtractSourcecode.java
 
 ## Screenshots
 
-![Project Screenshots](Images\MainUi.png "Main UI")
-![Project Screenshots](Images\SourceCode.png "Source Code Extractor")
-![Project Screenshots](Images\SaveCode.png "Save Code Option")
+![Project Screenshots](Images/MainUi.png "Main UI")
+![Project Screenshots](Images/SourceCode.png "Source Code Extractor")
+![Project Screenshots](Images/SaveCode.png "Save Code Option")
 
 
 
