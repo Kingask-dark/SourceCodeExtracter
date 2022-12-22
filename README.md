@@ -9,6 +9,9 @@ cd SourceCodeExtracter
 java ExtractSourcecode.java
 ```
 
+## Another Way to Run
+        If you have instal java on your pc then you can run SourceCodeExtracter.jar file
+
 ## Author
 - [@Kingask-dark](https://github.com/Kingask-dark)
 
