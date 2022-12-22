@@ -23,7 +23,7 @@ public class ExtractSourceCode {
     JFrame frame;
     JTextArea textArea;
     JTextField textField,errField;
-    JButton button,saveButton;
+    JButton button,saveButton,clearButton;
     JLabel label1,label2;
     JScrollPane scrollPane;
     JFileChooser jFileChooser;
@@ -41,6 +41,9 @@ public class ExtractSourceCode {
 
         button = new JButton("Extract");
         frame.add(button);
+
+        clearButton = new JButton("Clear");
+        frame.add(clearButton);
 
         label2 = new JLabel("Source Code:");
         frame.add(label2);
@@ -70,6 +73,13 @@ public class ExtractSourceCode {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Saveme();
+            }
+        });
+
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClearMe();
             }
         });
     }
@@ -119,6 +129,11 @@ public class ExtractSourceCode {
            errField.setText(e.getMessage());
 
         }
+    }
+
+    public void ClearMe(){
+        textArea.setText(null);
+        textField.setText(null);
     }
 
 
