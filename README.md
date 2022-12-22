@@ -2,8 +2,10 @@
 
 This is a simple java swing project.The main purpose of this project is to extract source code from any website that has source code visible.
 
-## Run ExtractSourcecode
+## Run ExtractSourcecode.java
 ``` bash
+git clone https://github.com/Kingask-dark/SourceCodeExtracter
+cd SourceCodeExtracter
 java ExtractSourcecode.java
 ```
 
