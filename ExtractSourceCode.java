@@ -13,6 +13,7 @@ import java.net.URLConnection;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -105,9 +106,36 @@ public class ExtractSourceCode {
     public void Saveme(){
         try {
             jFileChooser = new JFileChooser();
-            int returnval = jFileChooser.showSaveDialog(saveButton);
+            jFileChooser.setAcceptAllFileFilterUsed(false);
+           
+            FileFilter textFilter = new FileFilter() {
+                @Override
+                public boolean accept(File f) {
+                    if (f.isDirectory()) {
+                        return true;
+                    }
+                    String name = f.getName();
+                    return name.endsWith(".html");
+                }
+            
+                @Override
+                public String getDescription() {
+                    return "HTML files (*.html)";
+                }
+            };
+            jFileChooser.addChoosableFileFilter(textFilter);
+            jFileChooser.setFileFilter(textFilter);
+
+            int returnval = jFileChooser.showSaveDialog(null);
             if(returnval == JFileChooser.APPROVE_OPTION){
                 File file = jFileChooser.getSelectedFile();
+                String fileName = file.getName();
+                int dotIndex = fileName.lastIndexOf(".");
+                if (dotIndex == -1) {
+                    // No extension was provided, so add the desired extension
+                    fileName += ".html";
+                    file = new File(file.getParentFile(), fileName);
+                }
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
                 PrintWriter printWriter = new PrintWriter(fileOutputStream);
 
@@ -123,6 +151,7 @@ public class ExtractSourceCode {
                 in.close();
                 fileOutputStream.close();
 
+                
             }
         } catch (Exception e) {
             errField.setVisible(true);
@@ -142,5 +171,6 @@ public class ExtractSourceCode {
         eSourceCode.frame.setLayout(new FlowLayout(FlowLayout.CENTER,100,40));
         eSourceCode.frame.setVisible(true);
         eSourceCode.frame.setResizable(false);
+        eSourceCode.frame.setLocationRelativeTo(null);
     }
 }
